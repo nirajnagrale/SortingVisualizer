@@ -43,6 +43,7 @@ async function bubbleSort(arr) {
                 await pause();
                 await swap(arr, j, j + 1);
                 await pause();
+                await unmark(arr, j);
                 await unmark(arr, j + 1);
             }
         }
