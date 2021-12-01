@@ -1,4 +1,3 @@
-import {bubbleSort,selectionSort,insertionSort,mergeSort,quickSort,generateRandomNumber} from './algorithms.mjs'
 
 let btnGenerateNumbers = $('#btnGenerateNumbers')
 let btnselectionSort = $('#btnselectionSort')

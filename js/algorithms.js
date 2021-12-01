@@ -1,18 +1,19 @@
-import { barSwap,mark, unmark, done, swap, pause } from './helper.mjs';
 
-const barContainer = $('#barContainer')
+
+let t = document.querySelector('#barContainer').getBoundingClientRect()
+let wid = Math.floor(t.width-t.left-2);
+console.log(wid);
 let arr = [];
-export function generateRandomNumber() {
+function generateRandomNumber() {
     arr = [];
-    console.log(arr.length)
+    // console.log(arr.length)
     barContainer.empty();
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < (wid/22); i++) {
         arr.push(Math.floor(Math.random() * 300) + 5);
         let bar = $('<div>', {
             class: 'bar',
             display: 'inline-block',
-            style: 'height: ' + arr[i].toString() + 'px' + ';' + ' width:' + '40px' + ';'
-                + 'display:' + 'inline-block' + ';' + 'margin:' + '10px' + ';' + 'background-color:' + 'red' + ';',
+            style: `height: ${arr[i].toString()}px; width:20px;display:inline-block;margin:2px;background-color:red;`,
             id: i
         })
         
@@ -22,7 +23,7 @@ export function generateRandomNumber() {
     return arr;
 }
 
-export async function selectionSort(arr) {
+async function selectionSort(arr) {
     for (let i = 0; i < arr.length; i++) {
         for (let j = i + 1; j < arr.length; j++) {
             if (arr[i] > arr[j]) {
@@ -40,7 +41,7 @@ export async function selectionSort(arr) {
     }
 }
 
-export async function bubbleSort(arr) {
+async function bubbleSort(arr) {
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr.length - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
@@ -56,7 +57,7 @@ export async function bubbleSort(arr) {
     }
 }
 
-export async function insertionSort(arr) {
+async function insertionSort(arr) {
     for (let i = 1; i < arr.length; i++) {
         for (let j = i; j > 0; j--) {
             if (arr[j] < arr[j - 1]) {
@@ -102,7 +103,7 @@ async function partition(arr,start,end){
     await done(arr,i+1);
     return i+1;
 }
-export async function quickSort(arr,start,end){
+async function quickSort(arr,start,end){
     if(start == end)
         await done(arr,start);
     if(start<end){
@@ -158,7 +159,7 @@ async function merge(arr,low,mid,end){
 }
 
 
-export async function mergeSort(arr,start,end)
+async function mergeSort(arr,start,end)
 {
     if(start<end)
     {

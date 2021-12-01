@@ -1,6 +1,6 @@
 let barContainer = $('#barContainer');
 
-export function swap(arr, i, j) {
+function swap(arr, i, j) {
     return new Promise((resolve, reject) => {
         let temp = arr[i];
         arr[i] = arr[j];
@@ -12,7 +12,7 @@ export function swap(arr, i, j) {
         resolve();
     });
 }
-export function barSwap(arr, i, j) {
+function barSwap(arr, i, j) {
     return new Promise((resolve,reject)=>{
         console.log(i,j);
         let t = barContainer.children()[i].style.height;
@@ -21,7 +21,7 @@ export function barSwap(arr, i, j) {
         resolve();
     });
 }
-export function mark(arr, i) {
+function mark(arr, i) {
     return new Promise((resolve, reject) => {
         // console.log(barContainer.children());
         barContainer.children()[i].style.backgroundColor = 'green';
@@ -29,15 +29,14 @@ export function mark(arr, i) {
         resolve();
     });
 }
-export function unmark(arr, i) {
-    console.log(i);
+function unmark(arr, i) {
     return new Promise((resolve, reject) => {
         barContainer.children()[i].style.backgroundColor = 'red';
         // await pause();
         resolve();
     });
 }
-export function done(arr, i) {
+function done(arr, i) {
     // console.log(i);
     return new Promise((resolve, reject) => {
         barContainer.children()[i].style.backgroundColor = 'grey';
@@ -45,11 +44,11 @@ export function done(arr, i) {
         resolve();
     });
 }
-export function pause() {
+function pause() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve();
-        }, 100);
+        }, 50);
     });
 }
 
