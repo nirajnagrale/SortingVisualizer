@@ -23,7 +23,7 @@
 
 <body>
     <div class="container">
-        <div class="row" >
+        <div class="row">
             <div class="heading">
                 <h1>Sorting Visualizer</h1>
             </div>
@@ -40,13 +40,17 @@
 
 
         </div>
-        <div id="barContainer">
+        <div class="row">
+            <label for="Range" class="form-label">Speed of algo</label>
+            <input type="range" class="form-range" min="10" max="1000" step="10" id="Range">
+        </div>
+        <div class="row" id="barContainer">
 
         </div>
     </div>
-    <script src="./js/helper.js"></script>
-    <script defer src="./js/algorithms.js"></script>
-    <script defer src="./js/main.js"></script>
+        <script src="./js/helper.js"></script>
+        <script defer src="./js/algorithms.js"></script>
+        <script defer src="./js/main.js"></script>
 </body>
 
 </html>

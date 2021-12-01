@@ -1,10 +1,15 @@
 let arr = [];
+let time = 500;
+document.getElementById('Range').addEventListener('change', () => {
+    time = 1000-document.getElementById('Range').value;
+});
 function generateRandomNumber() {
     arr = [];
     barContainer.empty();
-    let t = document.querySelector('#barContainer').getBoundingClientRect()
+    let t = document.querySelector('.container').getBoundingClientRect()
+    console.log(t);
     let wid = Math.floor(t.width-t.left);
-    for (let i = 0; i < (wid/26); i++) {
+    for (let i = 0; i < (wid/35); i++) {
         arr.push(Math.floor(Math.random() * 300) + 5);
         let bar = $('<div>', {
             class: 'bar',
@@ -23,9 +28,9 @@ async function selectionSort(arr) {
             if (arr[i] > arr[j]) {
                 await mark(arr, i);
                 await mark(arr, j);
-                await pause();
+                await pause(time);
                 await swap(arr, i, j);
-                await pause();
+                await pause(time);
                 await unmark(arr, j);
             }
 
@@ -40,9 +45,9 @@ async function bubbleSort(arr) {
             if (arr[j] > arr[j + 1]) {
                 await mark(arr, j);
                 await mark(arr, j + 1);
-                await pause();
+                await pause(time);
                 await swap(arr, j, j + 1);
-                await pause();
+                await pause(time);
                 await unmark(arr, j);
                 await unmark(arr, j + 1);
             }
@@ -57,9 +62,9 @@ async function insertionSort(arr) {
             if (arr[j] < arr[j - 1]) {
                 await mark(arr, j);
                 await mark(arr, j - 1);
-                await pause();
+                await pause(time);
                 await swap(arr, j, j - 1);
-                await pause();
+                await pause(time);
                 await unmark(arr, j - 1);
             }
         }
@@ -78,18 +83,18 @@ async function partition(arr,start,end){
             i++;
             await mark(arr,i);
             await mark(arr,j);
-            await pause();
+            await pause(time);
             await swap(arr,i,j);
             await unmark(arr,i);
             await unmark(arr,j);
-            await pause();
+            await pause(time);
         }
     }
     await mark(arr,i+1)
     await mark(arr,end);
-    await pause();
+    await pause(time);
     await swap(arr,end,i+1);
-    await pause();
+    await pause(time);
     await unmark(arr,i+1)
     await unmark(arr,end);
     await done(arr,i+1);
@@ -136,7 +141,7 @@ async function merge(arr,low,mid,end){
     }
     for(let i = low;i<=end;i++)
     {
-        await pause();
+        await pause(time);
         barContainer.children()[i].style.height=arr[i].toString()+'px';
     }
 }

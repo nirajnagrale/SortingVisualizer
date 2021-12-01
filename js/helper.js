@@ -39,11 +39,11 @@ function done(arr, i) {
         resolve();
     });
 }
-function pause() {
+function pause(ms) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve();
-        }, 50);
+        }, ms);
     });
 }
 
