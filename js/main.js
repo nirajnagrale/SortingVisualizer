@@ -1,4 +1,3 @@
-
 let btnGenerateNumbers = $('#btnGenerateNumbers')
 let btnselectionSort = $('#btnselectionSort')
 let btnBubbleSort = $('#btnBubbleSort')
@@ -6,7 +5,9 @@ let btnInerstionSort = $('#btnInerstionSort')
 let btnmergeSort = $('#btnmergeSort')
 let btnquickSort = $('#btnquickSort')
 let arrBars = [];
+
 function disableBtns(){
+    btnGenerateNumbers.attr('disabled',true);
     btnselectionSort.attr('disabled',true);
     btnBubbleSort.attr('disabled',true);
     btnInerstionSort.attr('disabled',true);
@@ -14,8 +15,8 @@ function disableBtns(){
     btnquickSort.attr('disabled',true);
 }
 
-
 function enableBtns(){
+    btnGenerateNumbers.attr('disabled',false);
     btnselectionSort.attr('disabled',false);
     btnBubbleSort.attr('disabled',false);
     btnInerstionSort.attr('disabled',false);
@@ -29,33 +30,37 @@ btnGenerateNumbers.click(function(){
     enableBtns();
 })
 
-btnBubbleSort.click(function(){
+btnBubbleSort.click(async function(){
     disableBtns()
     arrBars = generateRandomNumber();
-    bubbleSort(arrBars);
+    await bubbleSort(arrBars);
     enableBtns();
 });
-btnselectionSort.click(function(){
+
+btnselectionSort.click(async function(){
     disableBtns()
     arrBars = generateRandomNumber();
-    selectionSort(arrBars);
+    await selectionSort(arrBars);
     enableBtns();
 });
-btnInerstionSort.click(function(){
+
+btnInerstionSort.click(async function(){
     disableBtns()
     arrBars = generateRandomNumber();
-    insertionSort(arrBars);
+    await insertionSort(arrBars);
     enableBtns();
 });
-btnmergeSort.click(function(){
+
+btnmergeSort.click(async function(){
     disableBtns()
     arrBars = generateRandomNumber();
-    mergeSort(arrBars,0,arrBars.length-1);
+    await mergeSort(arrBars,0,arrBars.length-1);
     enableBtns();
 });
-btnquickSort.click(function(){
+
+btnquickSort.click(async function(){
     disableBtns()
     arrBars = generateRandomNumber();
-    quickSort(arrBars,0,arrBars.length-1);
+    await quickSort(arrBars,0,arrBars.length-1);
     enableBtns();
 });

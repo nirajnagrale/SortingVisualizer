@@ -1,8 +1,6 @@
-
 let arr = [];
 function generateRandomNumber() {
     arr = [];
-    // console.log(arr.length)
     barContainer.empty();
     let t = document.querySelector('#barContainer').getBoundingClientRect()
     let wid = Math.floor(t.width-t.left);
@@ -14,8 +12,6 @@ function generateRandomNumber() {
             style: `height: ${arr[i].toString()}px; width:20px;display:inline-block;margin:2px;background-color:red;`,
             id: i
         })
-        
-
         barContainer.append(bar);
     }
     return arr;
@@ -25,7 +21,6 @@ async function selectionSort(arr) {
     for (let i = 0; i < arr.length; i++) {
         for (let j = i + 1; j < arr.length; j++) {
             if (arr[i] > arr[j]) {
-                // console.log("mark gonna run");
                 await mark(arr, i);
                 await mark(arr, j);
                 await pause();
@@ -76,8 +71,6 @@ async function partition(arr,start,end){
     let i =start-1;
     let pivot = arr[end];
     barContainer.children()[end].style.backgroundColor = "orange";
-    //marking pivot as orange
-    // console.log(pivot);
     for(let j = start;j<end;j++)
     {
         if(arr[j]<pivot){
@@ -106,7 +99,6 @@ async function quickSort(arr,start,end){
         await done(arr,start);
     if(start<end){
         let k= await partition(arr,start,end);
-        // console.log(k);
         await quickSort(arr,start,k-1),
         await quickSort(arr,k+1,end);
         
@@ -128,31 +120,23 @@ async function merge(arr,low,mid,end){
     i = 0;
     j = 0;
     let k =low;
-    // console.log(left,right);
     for(;i<left.length && j<right.length;k++){
         if(left[i]<right[j]){    
             arr[k] =left[i++]
         }else{
             arr[k] = right[j++]
         }
-        // console.log(arr);
     }
-    // console.log(arr);
     for(;i<left.length;k++,i++){
         arr[k]=left[i];
-        // await barSwap(arr,low+i,k)
     }
     for(;j<right.length;k++,j++){
         arr[k] = right[j]
-        // await barSwap(arr,mid+1+j,k);
     }
     for(let i = low;i<=end;i++)
     {
-        // console.log(i);
         await pause();
         barContainer.children()[i].style.height=arr[i].toString()+'px';
-        // await pause();
-
     }
 }
 
