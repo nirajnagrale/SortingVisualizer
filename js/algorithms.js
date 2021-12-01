@@ -1,14 +1,13 @@
 
 
-let t = document.querySelector('#barContainer').getBoundingClientRect()
-let wid = Math.floor(t.width-t.left-2);
-console.log(wid);
 let arr = [];
 function generateRandomNumber() {
     arr = [];
     // console.log(arr.length)
     barContainer.empty();
-    for (let i = 0; i < (wid/22); i++) {
+    let t = document.querySelector('#barContainer').getBoundingClientRect()
+    let wid = Math.floor(t.width-t.left);
+    for (let i = 0; i < (wid/24); i++) {
         arr.push(Math.floor(Math.random() * 300) + 5);
         let bar = $('<div>', {
             class: 'bar',
